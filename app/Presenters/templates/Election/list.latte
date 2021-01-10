@@ -1,0 +1,63 @@
+{block content}
+{varType App\model\to\oto\election\ElectionBrowseViewOTO $electionBrowseViewOTO}
+
+<div class="container">
+    {if $electionBrowseViewOTO->getCreateElectionPermissionLevel() != App\model\common\PermissionLevel::hidden}
+        <a n:class="btn, d-print-none, btn-success, $electionBrowseViewOTO->getCreateElectionPermissionLevel()"
+                n:href="Election:create">
+            <span class="fas fa-plus" aria-hidden="true"></span>
+            {_messages.common.create}
+        </a>
+    {/if}
+    <div class="board">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{_messages.election.elections}</h3>
+            </div>
+            <div class="card-body text-center">
+                {if empty($electionBrowseViewOTO->getElectionForViewOTOs())}
+                    {_messages.election.noElections}
+                {else}
+                    {varType App\model\to\oto\election\ElectionForViewOTO $electionForViewOTO}
+                    {foreach $electionBrowseViewOTO->getElectionForViewOTOs() as $electionForViewOTO}
+
+                        {if $iterator->counter > 1}
+                            <hr/>
+                        {/if}
+                        <h4>{$electionForViewOTO->getName()}</h4>
+                        <p><strong>od:</strong> {$electionForViewOTO->getStartDate()|date:'%d.%m.%Y %H:%M'}</p>
+                        <p><strong>do:</strong> {$electionForViewOTO->getEndDate()|date:'%d.%m.%Y %H:%M'}</p>
+                        {if $electionForViewOTO->getPublished()}
+                            <a class="btn btn-default btn-sm d-print-none" n:href="Election:detail $electionForViewOTO->getElectionId()">
+                                <span class="fas fa-list" aria-hidden="true"></span>
+                                {_messages.election.myNominations}
+                            </a>
+                        {/if}
+                        {if $electionForViewOTO->getStartDate() <= \Nette\Utils\DateTime::createFromFormat('Y-m-d H:i', date("Y-m-d H:i")) &&
+                        $electionForViewOTO->getEndDate() >= \Nette\Utils\DateTime::createFromFormat('Y-m-d H:i', date("Y-m-d H:i"))}
+                            <a class="btn btn-default btn-sm d-print-none" n:href="Nomination:create $electionForViewOTO->getElectionId()">
+                                <span class="fas fa-user" aria-hidden="true"></span>
+                                {_messages.election.nominateSomeone}
+                            </a>
+                        {/if}
+                        {if $electionBrowseViewOTO->getEditElectionPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                            <a n:class="btn, btn-sm, d-print-none, $electionBrowseViewOTO->getEditElectionPermissionLevel()"
+                                    n:href="Election:edit $electionForViewOTO->getElectionId()">
+                                <span class="fas fa-pen" aria-hidden="true"></span>
+                                {_messages.common.edit}
+                            </a>
+                        {/if}
+                        {if $electionBrowseViewOTO->getDeleteElectionPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                            <a n:class="btn, btn-sm, d-print-none, $electionBrowseViewOTO->getDeleteElectionPermissionLevel()"
+                                    n:href="deleteElection! $electionForViewOTO->getElectionId()" data-confirm
+                                                                                                  data-confirm-input="DELETE {$electionForViewOTO->getName()}">
+                                <span class="fas fa-trash" aria-hidden="true"></span>
+                                {_messages.common.delete}
+                            </a>
+                        {/if}
+                    {/foreach}
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>

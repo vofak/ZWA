@@ -1,0 +1,67 @@
+.card-primary {
+    border-color: #337ab7;
+}
+
+.card-primary > .card-header {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.table .tr-inactive {
+    border-left: #a8a8a8 solid 10px;
+}
+
+.table-hover .tr-inactive:hover {
+    background-color: #dbdbdb;
+}
+
+.table .tr-observer {
+    border-left: #d76ce3 solid 10px;
+}
+
+.table-hover .tr-observer:hover {
+    background-color: #e9aaf1;
+}
+
+.table .tr-baby-member {
+    border-left: #79de8f solid 10px;
+}
+
+.table-hover .tr-baby-member:hover {
+    background-color: #b1dfbb;
+}
+
+.table .tr-full-member {
+    border-left: #51c9dc solid 10px;
+}
+
+.table-hover .tr-full-member:hover {
+    background-color: #abdde5;
+}
+
+.table .tr-boardie {
+    border-left: #ffa058 solid 10px;
+}
+
+.table-hover .tr-boardie:hover {
+    background-color: #ffd5a1;
+}
+
+label.required::after {
+    color: red;
+    content: "*";
+}
+
+.flash.success {
+    color: black;
+    background-color: #55d773;
+    border: 1px solid #23a83e;
+    border-radius: 3px;
+    padding: 1em;
+    margin: 1em 0;
+}

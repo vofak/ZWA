@@ -1,0 +1,156 @@
+common:
+    delete: "Smazat"
+    edit: "Upravit"
+    add: "Přidat"
+    create: "Vytvořit"
+    back: "Zpět"
+    submit: "Uložit"
+    logOut: "Odhlásit se"
+
+    createSuccess: "Údaje byly uloženy"
+    editSuccess: "Údaje byly upraveny"
+    deleteSuccess: "Údaje byly smazány"
+
+menu:
+    members: "LBG"
+    stats: "Statistiky"
+    board: "Board"
+    events: "Akce"
+    elections: "Volby"
+    about: "O Aplikaci"
+
+home:
+    welcome: "Vítej"
+
+member:
+    name: "Jméno"
+    surname: "Příjmení"
+    nickname: "Přezdívka"
+    email: "Email"
+    workingGroup: "WG"
+    phoneNumber: "Telefon"
+    active: "Aktivní"
+    rank: "Pozice"
+    joinedDate: "V BESTu od"
+    gender: "Pohlaví"
+    faculty: "Fakulta"
+    angel: "Angel"
+    facebook: "FB"
+    memberProfile: "Profil člena"
+    skype: "Skype"
+    shirtSize: "Velikost trička"
+    birthday: "Datum narození"
+    role: "Role v DB"
+    language: "Jazyk"
+    trello: "Username v Trellu"
+
+    coreTeamPositions: "Pozice v core teamu"
+    eventName: "Název akce"
+    coreTeamPosition: "Pozice v CT"
+    eventStartDate: "Začátek akce"
+    eventEndDate: "Konec akce"
+
+    boardPositions: "Pozice v boardu"
+    boardName: "Název boardu"
+    boardPosition: "Pozice v boardu"
+    mandateStartDate: "Začátek mandátu"
+    mandateEndDate: "Konec mandátu"
+
+    editMember: "Upravit člena"
+    createMember: "Nový člen"
+
+    basicInfo: "Základní informace"
+    membership: "Členství"
+    other: "Další"
+
+    nameRequired: "Děláš si prdel? To nevíš ani jméno?"
+    surnameRequired: "Zadej i příjmení, jinak budeme mít problém udělat tomuhle člověku vizitku"
+    emailRequired: "Email bude potřeba pro přihlášení"
+    genderRequired: "Hermafrodity neberem"
+
+board:
+    board: "Board"
+    previous: "Předchozí"
+    following: "Následující"
+    boardNumber: "Číslo boardu"
+    startDate: "Začátek mandátu"
+    endDate: "Konec mandátu"
+    name: "Název boardu"
+
+    editBoard: "Upravit board"
+    createBoard: "Nový board"
+
+    about: "O boardu"
+    positions: "Pozice"
+
+event:
+    name: "Název"
+    eventDescription: "Popis akce"
+    place: "Místo konání"
+    startDate: "Začátek akce"
+    endDate: "Konec akce"
+    coreTeam: "Core Team"
+    positionInCT: "Pozice v CT"
+    memberOfCT: "Člen"
+    event: "Akce"
+    mo: "Main Organiser"
+    facebook: "Facebook"
+    state: "Stav"
+
+    editEvent: "Upravit akci"
+    createEvent: "Nová akce"
+    addCTMember: "Přidat člena CT"
+
+    basicInfo: "Základní informace"
+
+    nameRequired: "Jméno bys vědět mohl"
+    placeRequired: "Kde se akce koná je docela důležitá informace"
+    dateRequired: "Kdy se akce koná je docela důležitá informace"
+
+ctpos:
+    name: "Název"
+    member: "Člen"
+    description: "Popis"
+
+    nameRequired: "Pozice v core teamu potřebuje název"
+    memberRequired: "Když už tam bude nějaká pozice, tak by měl být obsazená, ne?"
+    descriptionDescription: "Nepovinný stručný popis pozice"
+
+    editCoreTeamPosition: "Upravit pozici v CT"
+    createCoreTeamPosition: "Nová pozice v CT"
+
+stats:
+    activeMembers: "Aktivní členové"
+    faculties: "Fakulty"
+    workingGroups: "Working Groups"
+    dickBoobsRatio: "Dick-Boobs Ratio"
+
+nomination:
+    createNomination: "Nová nominace"
+    nominate: "Nominovat"
+    description: "Komentář"
+    descriptionDescription: "Nepovinný komentář, zobrazí se nominovanému"
+    nominee: "Nominovaný člen"
+    position: "Pozice"
+
+election:
+    elections: "Volby"
+    noElections: "V současnosti tu nejsou žádné volby"
+    myNominations: "Moje nominace"
+    nominateSomeone: "Nominovat kandidáta"
+    nominations: "Nominace"
+    name: "Název"
+    startDate: "Začátek nominací"
+    endDate: "Konec nominací"
+    positions: "Pozice"
+
+    editElection: "Upravit volby"
+    createElection: "Nové volby"
+
+    noNominations: "Bohužel jsi nebyl nominován na žádnou pozici. <br/>Nesmutni, dej si mrkev!<br/><br/>"
+
+    nameRequired: "Pojmenuj ty volby, co ti to udělá..."
+    startDateRequired: "Začátek nominací je povinný údaj!"
+    endDateRequired: "Konec nominací je povinný údaj!"
+
+    publishedDescription: " Členové si mohou zobrazit vlastní nominace (zapnout po volbách)"

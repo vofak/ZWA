@@ -1,0 +1,119 @@
+{block content}
+{varType App\model\to\oto\event\EventDetailOTO $eventDetailOTO}
+<div class="container">
+    <div class="card bg-light">
+        <div class="card-header">
+            <h4 class="card-title float-left">
+                {_messages.event.eventDescription}
+            </h4>
+            <span class="btn-group float-right d-print-none">
+                {if $eventDetailOTO->getEditEventPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                <a n:class="btn, btn-info, $eventDetailOTO->getEditEventPermissionLevel()"
+                        n:href="edit $eventDetailOTO->getEventId()">
+                    <span class="fas fa-pen" aria-hidden="true"></span>
+                    {_messages.common.edit}
+                    </a>
+                {/if}
+                {if $eventDetailOTO->getDeleteEventPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                <a n:class="btn, btn-danger, $eventDetailOTO->getDeleteEventPermissionLevel()"
+                        n:href="deleteEvent! $eventDetailOTO->getEventId()" data-confirm data-confirm-timeout="10">
+                    <span class="fas fa-trash" aria-hidden="true"></span>
+                    {_messages.common.delete}
+                    </a>
+                {/if}
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <h3 id="eventName" class="card-title">
+                    <!--{$eventDetailOTO->getEventName()}-->
+                </h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>{_messages.event.place}</h5>
+                        <p>{$eventDetailOTO->getPlace()}</p>
+
+                        <h5>{_messages.event.startDate}</h5>
+                        <p>{$eventDetailOTO->getStartDate()|date:'%d.%m. %Y'}</p>
+
+                        <h5>{_messages.event.endDate}</h5>
+                        <p>{$eventDetailOTO->getEndDate()|date:'%d.%m. %Y'}</p>
+
+                        <h5>{_messages.event.state}</h5>
+                        <p>{$eventDetailOTO->getState()}</p>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card bg-light">
+                        <div class="card-header">
+                            <h3 class="card-title float-left">{_messages.event.coreTeam}</h3>
+                            <span class="btn-group pull-right d-print-none">
+                                    {if $eventDetailOTO->getEditCoreTeamPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                                    <a n:class="btn, btn-success, $eventDetailOTO->getEditCoreTeamPermissionLevel()"
+                                            n:href="CoreTeamPosition:create $eventDetailOTO->getEventId()">
+                                        <span class="fas fa-plus" aria-hidden="true"></span>
+                                        {_messages.event.addCTMember}
+                                        </a>
+                                    {/if}
+                                </span>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-responsive table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>{_messages.event.positionInCT}</th>
+                                    <th>{_messages.event.memberOfCT}</th>
+                                    <th>{_messages.event.event}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {varType App\model\to\oto\event\EventCoreTeamPositionOTO $coreTeamPosition}
+                                <tr n:foreach="$eventDetailOTO->getCoreTeamPositions() as $coreTeamPosition">
+                                    <td>{$coreTeamPosition->getCoreTeamPositionName()}</td>
+                                    <td>
+                                        <a n:href="Member:detail $coreTeamPosition->getMemberId()">{$coreTeamPosition->getName()}</a>
+                                    </td>
+                                    <td>
+                                        <!-- If it does not have an id, it is a main organiser position which cannot be modified or deleted -->
+                                        {if $coreTeamPosition->getCoreTeamPositionId() && $eventDetailOTO->getEditCoreTeamPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                                            <a n:class=" d-print-none, $eventDetailOTO->getEditCoreTeamPermissionLevel()"
+                                                        n:href="deleteCoreTeamPosition! $coreTeamPosition->getCoreTeamPositionId()">
+                                                <span class="fas fa-trash text-dark"></span>
+                                            </a>
+                                            <a n:class=" d-print-none, $eventDetailOTO->getEditCoreTeamPermissionLevel()"
+                                                        n:href="CoreTeamPosition:edit $coreTeamPosition->getCoreTeamPositionId()">
+                                                <span class="fas fa-pen text-dark"></span>
+                                            </a>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var xhr = new XMLHttpRequest();
+
+    $(document).ready(function () {
+
+        xhr.open("GET", "/event?eventId=" + new URLSearchParams(window.location.search).get('eventId') + '&do=getEventName');
+        xhr.onload = e => onload(e);
+        xhr.send()
+
+    });
+
+    function onload(e) {
+        var response = JSON.parse(e.target.response);
+        document.getElementById('eventName').textContent = response.name;
+        console.log(response.name);
+    }
+
+</script>

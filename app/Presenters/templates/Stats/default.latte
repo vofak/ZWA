@@ -1,0 +1,73 @@
+{varType App\model\to\oto\stats\StatsDataOTO $rankDataOTO}
+{varType App\model\to\oto\stats\StatsGenderedDataOTO $facultyDataOTO}
+{varType App\model\to\oto\stats\StatsDataOTO $wgDataOTO}
+{varType App\model\to\oto\stats\StatsDickBoobsRatioOTO $genderDataOTO}
+
+{block content}
+    <div class="row">
+        <div class="m-auto col-lg-5">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h4>{_messages.stats.activeMembers}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="memberRankChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-auto col-lg-5">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h4>{_messages.stats.faculties}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="memberFacultyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-auto col-lg-5">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h4>{_messages.stats.workingGroups}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="memberWgChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-auto col-lg-5">
+            <h4>{_messages.stats.dickBoobsRatio}</h4>
+            <div class="progress">
+                <div class="progress-bar bg-danger" style="width: {$genderDataOTO->getDickRatio()}%">
+                    <span class="sr-only"></span>dicks ({$genderDataOTO->getDickRatio()}%)
+                </div>
+                <div class="progress-bar bg-success" style="width: {$genderDataOTO->getBoobsRatio()}%">
+                    <span class="sr-only"></span>boobs ({$genderDataOTO->getBoobsRatio()}%)
+                </div>
+            </div>
+        </div>
+    </div>
+
+{/block}
+
+
+{block scripts}
+
+    <script src="{$basePath}/js/chart/Chart.min.js"></script>
+    <script src="{$basePath}/js/custom/charts.js"></script>
+    <script>
+        $(document).ready(function () {
+            createMemberRankChart($('#memberRankChart'), {$rankDataOTO->getLabels()|json|noescape}, {$rankDataOTO->getData()|json|noescape});
+            createMemberFacultyChart($('#memberFacultyChart'), {$facultyDataOTO->getLabels()|json|noescape}, {$facultyDataOTO->getMaleData()|json|noescape}, {$facultyDataOTO->getFemaleData()|json|noescape});
+            createMemberWgChart($('#memberWgChart'), {$wgDataOTO->getLabels()|json|noescape}, {$wgDataOTO->getData()|json|noescape});
+        });
+    </script>
+
+{/block}

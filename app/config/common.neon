@@ -1,0 +1,71 @@
+parameters:
+	clientId: "1022078268346-su6ajbbehu23efq0v0tq8t3r88lpfb5q.apps.googleusercontent.com"
+	clientSecret: "QlrsqDBoT9VUcMSGijO8Znq1"
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+session:
+	expiration: 14 days
+
+di:
+	export:
+		parameters: no
+		tags: no
+		types:
+		    - App\model\core\localization\LocaleResolver
+
+extensions:
+    translation: Contributte\Translation\DI\TranslationExtension
+
+translation:
+    locales:
+        default: en
+        whitelist: [en, cs, sk]
+    dirs:
+        - %appDir%/lang
+    localeResolvers:
+        - App\model\core\localization\LocaleResolver
+
+services:
+	router: App\Router\RouterFactory::createRouter
+
+	# DAO
+	- App\model\dal\dao\BoardDAO
+	- App\model\dal\dao\ElectionDAO
+	- App\model\dal\dao\EventDAO
+	- App\model\dal\dao\MemberDAO
+	- App\model\dal\dao\SystemDAO
+
+	# Facade
+	- App\model\facade\board\BoardFacade
+	- App\model\facade\election\ElectionFacade
+	- App\model\facade\event\EventFacade
+	- App\model\facade\member\MemberFacade
+
+	# Filler
+	- App\model\facade\board\BoardTOFiller
+	- App\model\facade\election\ElectionTOFiller
+	- App\model\facade\event\EventTOFiller
+	- App\model\facade\member\MemberTOFiller
+	- App\model\facade\stats\StatsTOFiller
+
+	# Resolver
+	- App\model\core\security\SecurityResolver
+
+	# authorization
+	- App\model\core\security\AuthorizationFactory::create
+
+	# Google Login
+	oauth2.google.factory:
+	    factory: App\model\core\login\GoogleProviderFactory(%clientId%, %clientSecret%)
+	    autowired: false
+	oauth2.google:
+		type: League\OAuth2\Client\Provider\Google
+		factory: @oauth2.google.factory::create()
+
+	latte.latteFactory:
+	    setup:
+	        - addFilter('json', ['App\model\templating\Filters', 'json'])

@@ -1,0 +1,96 @@
+{block content}
+{varType App\model\to\oto\member\MemberBrowseViewOTO $memberBrowseViewOTO}
+<div class="container-fluid">
+    {if $memberBrowseViewOTO->getCreateMemberPermissionLevel() != App\model\common\PermissionLevel::hidden}
+        <a n:class="btn, btn-success, d-print-none, $memberBrowseViewOTO->getCreateMemberPermissionLevel()"
+                n:href="Member:create">
+            <span class="fas fa-plus" aria-hidden="true"></span>
+            {_messages.common.create}
+        </a>
+    {/if}
+    <table class="table table-responsive table-bordered table-hover"
+           data-toggle="table"
+           data-search="true"
+           data-page-size="10"
+           data-page-list="[]"
+           data-pagination="true">
+        <thead>
+        <tr>
+            <th class="d-none d-lg-table-cell" data-searchable="false"></th>
+            <th data-field="name" data-sortable="true" data-sorter="nameSorter">{_messages.member.name}</th>
+            <th data-field="email" data-sortable="true">{_messages.member.email}</th>
+            <th class="d-none d-md-table-cell" data-field="wg" data-sortable="true"
+                data-align="center">{_messages.member.workingGroup}</th>
+            <th data-field="telephone" data-sortable="true" data-align="right">{_messages.member.phoneNumber}</th>
+            <th class="d-none" data-field="active" data-sortable="true"
+                data-align="center">{_messages.member.active}</th>
+            <th data-field="position" data-sortable="true">{_messages.member.rank}</th>
+            <th class="d-none d-md-table-cell" data-field="joined" data-sortable="true"
+                data-align="center">{_messages.member.joinedDate}</th>
+            <th class="d-none d-md-table-cell" data-field="gender" data-sortable="true"
+                data-align="center">{_messages.member.gender}</th>
+            <th class="d-none d-md-table-cell" data-field="faculty" data-sortable="true"
+                data-align="center">{_messages.member.faculty}</th>
+            <th class="d-none d-md-table-cell" data-field="angel" data-sortable="true">{_messages.member.angel}</th>
+            <th data-field="fb" data-align="center">{_messages.member.facebook}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {varType App\model\to\oto\member\MemberForViewOTO $memberForView}
+        {foreach $memberBrowseViewOTO->getMemberForViewOTOs() as $memberForView}
+            <tr n:class="$memberForView->getRankName() == 'Boardie' ? tr-boardie,
+            $memberForView->getRankName() == 'Full member' ? tr-full-member,
+            $memberForView->getRankName() == 'Baby member' ? tr-baby-member,
+            $memberForView->getRankName() == 'Observer' ? tr-observer,
+            $memberForView->getRankName() == 'Alumni' ? tr-inactive,
+            $memberForView->getRankName() == 'Neaktivní' ? tr-inactive,
+            $memberForView->getRankName() == 'Distanční člen' ? tr-inactive">
+
+                <td class="d-none d-lg-table-cell">
+                    <a n:href="Member:detail $memberForView->getMemberId()">
+                        <img class="rounded-circle" src="{$memberForView->getImageSrcPath()}" alt="Profile Image"
+                             width="24"/>
+                    </a>
+                </td>
+                <td data-sort-name="{$memberForView->getName()}">
+                    <a n:href="Member:detail $memberForView->getMemberId()">{$memberForView->getName()}</a>
+                </td>
+                <td>{$memberForView->getEmail()}</td>
+                <td class="d-none d-md-table-cell">{$memberForView->getWg()}</td>
+                <td><a href="tel: {$memberForView->getPhoneNumber()}">{$memberForView->getPhoneNumber()}</a></td>
+                <td class="d-none">{$memberForView->isActive() ? ano : ne}</td>
+                <td>{$memberForView->getRankName()}</td>
+                <td class="d-none d-md-table-cell">{$memberForView->getJoinedDate()|date:'%Y/%m'}</td>
+                <td class="d-none d-md-table-cell">{$memberForView->getGender()}</td>
+                <td class="d-none d-md-table-cell">{$memberForView->getFaculty()}</td>
+                {var App\model\to\oto\member\MemberAngelOTO $angel = $memberForView->getAngel()}
+                <td class="d-none d-md-table-cell">
+                    {if $angel}
+                        <a n:href="Member:detail $angel->getAngelId()">{$angel->getName()}</a>
+                    {else}
+                        -
+                    {/if}
+                </td>
+                <td>
+                    {if $memberForView->getFacebook()}
+                        <a href="{$memberForView->getFacebook()}" target="_blank">
+                            <span class="fab fa-lg fa-facebook-square"></span>
+                        </a>
+                    {/if}
+                </td>
+            </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</div>
+<script>
+
+    function nameSorter(a, b) {
+        var aName = a.substring(a.indexOf(">") + 1, a.lastIndexOf("<"));
+        var bName = b.substring(b.indexOf(">") + 1, b.lastIndexOf("<"));
+
+        return aName.localeCompare(bName);
+    }
+</script
+
+

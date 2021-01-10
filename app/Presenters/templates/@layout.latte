@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon"/>
+
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Members</title>
+
+    <!-- JQUERY -->
+    <script src="{$basePath}/js/jquery/jquery-3.5.1.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="{$basePath}/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css">
+    <link href="{$basePath}/css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css">
+    <link href="{$basePath}/css/bootstrap-table.min.css" rel="stylesheet" type="text/css">
+
+    <script src="{$basePath}/js/bootstrap/bootstrap.min.js"></script>
+    <script src="{$basePath}/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{$basePath}/js/bootstrap/bootstrap-table.min.js"></script>
+
+    <!-- FONT AWESOME -->
+    <link href="{$basePath}/css/font-awesome-all.css" rel="stylesheet" type="text/css">
+
+    <!-- OTHER -->
+    <script src="{$basePath}/js/confirm-dialog.js"></script>
+
+    <link href="{$basePath}/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand " n:href="Homepage:">
+        <img alt="BEST Prague" src="{$basePath}/images/bestprague.png"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" n:href="Member:list">
+                    <i class="fas fa-home"></i>
+                    {_messages.menu.members}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" n:href="Stats:default">
+                    <i class="fas fa-chart-area"></i>
+                    {_messages.menu.stats}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" n:href="Board:currentDetail">
+                    <i class="fas fa-portrait"></i>
+                    {_messages.menu.board}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" n:href="Event:list">
+                    <i class="fas fa-calendar-day"></i>
+                    {_messages.menu.events}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" n:href="Election:list">
+                    <i class="fas fa-vote-yea"></i>
+                    {_messages.menu.elections}
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" n:href="Member:detail $user->getIdentity()->getId()"
+                   title="{$user->getIdentity()->firstName} {$user->getIdentity()->lastName}">
+                    <span class="fas fa-user"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" n:href="Login:out" title="{_messages.common.logOut}">
+                    <span class="fas fa-sign-out-alt"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+<article>
+    {include content}
+</article>
+
+{block scripts}
+    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+{/block}
+</body>
+</html>

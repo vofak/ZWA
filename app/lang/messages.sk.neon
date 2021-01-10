@@ -1,0 +1,156 @@
+common:
+    delete: "Smazať"
+    edit: "Upraviť"
+    add: "Pridať"
+    create: "Vytvoriť"
+    back: "Zpeť"
+    submit: "Uložiť"
+    logOut: "Odhlásiť sa"
+
+    createSuccess: "Údaje boly uloženy"
+    editSuccess: "Údaje boly upraveny"
+    deleteSuccess: "Údaje boly smazány"
+
+menu:
+    members: "LBG"
+    stats: "Statistiky"
+    board: "Doska"
+    events: "Udalosti"
+    elections: "Volenie"
+    about: "O Aplikácii"
+
+home:
+    welcome: "Vítaj"
+
+member:
+    name: "Meno"
+    surname: "Příejmeníe"
+    nickname: "Přezďovka"
+    email: "E-mail"
+    workingGroup: "WG"
+    phoneNumber: "Telefónne číslo"
+    active: "Aktívny"
+    rank: "Hodnosť"
+    joinedDate: "Pripojil sa"
+    gender: "Pohlavie"
+    faculty: "Fakulta"
+    angel: "Anjel"
+    facebook: "FB"
+    memberProfile: "Profil čliena"
+    skype: "Skype"
+    shirtSize: "Velikosť košile"
+    birthday: "Dátum narozenia"
+    role: "Rola v databázi"
+    language: "Jazyk"
+    trello: "Username v Trellu"
+
+    coreTeamPositions: "Pozícia v jádrovej skupině"
+    eventName: "Název akcie"
+    coreTeamPosition: "Pozícia v CT"
+    eventStartDate: "Začiatok akcie"
+    eventEndDate: "Koniec akcie"
+
+    boardPositions: "Pozície v dosce"
+    boardName: "Názov dosky"
+    boardPosition: "Pozícia v dosce"
+    mandateStartDate: "Začiatok mandátu"
+    mandateEndDate: "Koniec mandátu"
+
+    editMember: "Upraviť čliena"
+    createMember: "Nový člien"
+
+    basicInfo: "Základné informácie"
+    membership: "Členstvo"
+    other: "Dalšie"
+
+    nameRequired: "Děláš si šoufky? To nevieš ani meno?"
+    surnameRequired: "Zadej i príjmeníe, inák budeme mať problem udělať tomuto človuku vizitku"
+    emailRequired: "Email bude potreba pro prihlašenie"
+    genderRequired: "Hermafrodity neberem"
+
+board:
+    board: "Doska"
+    previous: "Predchodzí"
+    following: "Následujucí"
+    boardNumber: "Číslo dosky"
+    startDate: "Začiatok mandátu"
+    endDate: "Koniec mandátu"
+    name: "Meno boardu"
+
+    editboard: "Upraviť dosku"
+    createBoard: "Nova doska"
+
+    about: "O boardu"
+    positions: "Pozície"
+
+event:
+    name: "Názov"
+    eventDescription: "Popis akcie"
+    place: "Miesto konanie"
+    startDate: "Začiatok akcie"
+    endDate: "Koniec akcie"
+    coreTeam: "Jádrový tým"
+    positionInCT: "Pozícia v CT"
+    memberOfCT: "Člien"
+    event: "Akcie"
+    mo: "Main Organiser"
+    facebook: "Facebook"
+    state: "Stav"
+
+    editEvent: "Upraviť akcii"
+    createEvent: "Nová akcie"
+    addCTMember: "Přidať čliena CT"
+
+    basicInfo: "Základné informácie"
+
+    nameRequired: "Meno bys vedieť mohol"
+    placeRequired: "Kte sa ákcia koná je docela duoležitá informácie"
+    dateRequired: "Ktz sa ákcia koná je docela duoležitá informácie"
+
+ctpos:
+    name: "Meno"
+    member: "Člien"
+    description: "Popis"
+
+    nameRequired: "Pozícia v core teamu potrebuje meno"
+    memberRequired: "Keť už tam bude nějaká pozícia, tak uš by mala byť obsadzená, nie?"
+    descriptionDescription: "Nepovinný stručný popis pozície"
+
+    editCoreTeamPosition: "Upraviť pozícii v CT"
+    createCoreTeamPosition: "Nová pozície v CT"
+
+stats:
+    activeMembers: "Aktivní člienové"
+    faculties: "Fakulty"
+    workingGroups: "Working Groupy"
+    dickBoobsRatio: "Dick-Boobs Pomier"
+
+nomination:
+    createNomination: "Nová nominácia"
+    nominate: "Nominovať"
+    description: "Komentár"
+    descriptionDescription: "Nepovinný komentár, zobrazí a nominovanému"
+    nominee: "Nominovaný člien"
+    position: "Pozícia"
+
+election:
+    elections: "Volenie"
+    noElections: "V súčasnosti tu niesú žiadné volenie"
+    myNominations: "Moje nominácie"
+    nominateSomeone: "Nominovať kandidáta"
+    nominations: "Nominácie"
+    name: "Meno"
+    startDate: "Začiatok nominácií"
+    endDate: "Koniec nominácií"
+    positions: "Pozícia"
+
+    editElection: "Upraviť volenie"
+    createElection: "Nové volenie"
+
+    noNominations: "Bohužiel si niebol nominovaný na žiadnu pozícii. <br/>Neplakaj, daj si mrkov!<br/><br/>"
+
+    nameRequired: "Pomenuj ta volenia, čo ti to udělá..."
+    startDateRequired: "Začiatok nominácií je povinný údaj!"
+    endDateRequired: "Koniec nominácií je povinný údaj!"
+
+    publishedDescription: " Člienovia si možú zobraziť vlastnú nominácii (zapnúť po voleniach)"

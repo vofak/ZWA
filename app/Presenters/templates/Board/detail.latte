@@ -1,0 +1,92 @@
+{block content}
+{varType App\model\to\oto\board\BoardDetailOTO $boardDetailOTO}
+<div class="container">
+    <div class="board">
+        <div class="card bg-light">
+            <div class="card-header">
+                <h3 class="card-title float-left">
+                    {_messages.board.board}
+                </h3>
+                <div class="btn-group float-right d-print-none">
+                    {if $boardDetailOTO->getCreateBoardPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                        <a n:class="btn, btn-success, $boardDetailOTO->getCreateBoardPermissionLevel()"
+                                n:href="create">
+                            <span class="fas fa-plus" aria-hidden="true"></span>
+                        </a>
+                    {/if}
+                    {if $boardDetailOTO->getEditBoardPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                        <a n:class="btn, btn-info, $boardDetailOTO->getEditBoardPermissionLevel()"
+                                n:href="edit $boardDetailOTO->getBoardId()">
+                            <span class="fas fa-pen" aria-hidden="true"></span>
+                        </a>
+                    {/if}
+                    {if $boardDetailOTO->getDeleteBoardPermissionLevel() != App\model\common\PermissionLevel::hidden}
+                        <a n:class="btn, btn-danger, $boardDetailOTO->getDeleteBoardPermissionLevel()"
+                                n:href="deleteBoard! $boardDetailOTO->getBoardId()" data-confirm
+                                                                                    data-confirm-input="DELETE {$boardDetailOTO->getBoardName()}">
+                            <span class="fas fa-trash" aria-hidden="true"></span>
+                        </a>
+                    {/if}
+
+                    {if $boardDetailOTO->getPreviousBoardId()}
+                        <a class="btn btn-warning" n:href="detail $boardDetailOTO->getPreviousBoardId()">
+                            <span class="fas fa-arrow-left" aria-hidden="true"></span>
+                            {_messages.board.previous}
+                        </a>
+                    {else}
+                        <a class="btn btn-warning disabled">
+                            <span class="fas fa-arrow-left" aria-hidden="true"></span>
+                            {_messages.board.previous}
+                        </a>
+                    {/if}
+                    {if $boardDetailOTO->getFollowingBoardId()}
+                        <a class="btn btn-warning" n:href="detail $boardDetailOTO->getFollowingBoardId()">
+                            {_messages.board.following}
+                            <span class="fas fa-arrow-right" aria-hidden="true"></span>
+                        </a>
+                    {else}
+                        <a class="btn btn-warning disabled">
+                            {_messages.board.following}
+                            <span class="fas fa-arrow-right" aria-hidden="true"></span>
+                        </a>
+                    {/if}
+                </div>
+            </div>
+            {if $boardDetailOTO}
+                <div class="card-body">
+                    <h3 class="card-title">
+                        {$boardDetailOTO->getBoardName()}
+                    </h3>
+                    <h4>{_messages.board.boardNumber}</h4>
+                    <p>{$boardDetailOTO->getBoardNumber()}</p>
+                    <h4>{_messages.board.startDate}</h4>
+                    <p>{$boardDetailOTO->getStartDate()|date:'%d. %m. %Y'}</p>
+                    <h4>{_messages.board.endDate}</h4>
+                    <p>{$boardDetailOTO->getEndDate()|date:'%d. %m. %Y'}</p>
+
+                    <div class="row">
+                        {varType App\model\to\oto\board\BoardDetailBoardMemberOTO $boardMember}
+                        {foreach $boardDetailOTO->getBoardMembers() as $boardMember}
+                            <div class="col-sm-3">
+                                <div class="text-center">
+                                    <a n:href="Member:detail $boardMember->getMemberId()">
+                                        <img class="rounded-circle" src="{$boardMember->getImageSrcPath()}"
+                                             alt="Profile image" width="75"/>
+                                    </a>
+                                    <h5 class="pt-2">{$boardMember->getBoardPositionName()}</h5>
+                                    <a n:href="Member:detail $boardMember->getMemberId()">
+                                        {$boardMember->getName()}
+                                    </a>
+                                    {if $boardMember->getStartDate() || $boardMember->getEndDate()}
+                                        <p class="small">{$boardMember->getStartDate() ? $boardMember->getStartDate() : $boardDetailOTO->getStartDate()|date:'%d. %m. %Y'}
+                                            - {$boardMember->getEndDate() ? $boardMember->getEndDate() : $boardDetailOTO->getEndDate()|date:'%d. %m. %Y'}</p>
+                                    {/if}
+                                </div>
+                            </div>
+                        {/foreach}
+                    </div>
+                </div>
+            {/if}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+common:
+    delete: "Delete"
+    edit: "Edit"
+    add: "Add"
+    create: "Create"
+    back: "Back"
+    submit: "Submit"
+    logOut: "Log out"
+
+    createSuccess: "Data was succesfully saved"
+    editSuccess: "Data was succesfully edited"
+    deleteSuccess: "Data was succesfully deleted"
+
+menu:
+    members: "LBG"
+    stats: "Stats"
+    board: "Board"
+    events: "Events"
+    elections: "Elections"
+    about: "About"
+
+home:
+    welcome: "Welcome"
+
+member:
+    name: "Name"
+    surname: "Surname"
+    nickname: "Nickname"
+    email: "Email"
+    workingGroup: "WG"
+    phoneNumber: "Cell Phone"
+    active: "Active"
+    rank: "Rank"
+    joinedDate: "Joined"
+    gender: "Gender"
+    faculty: "Faculty"
+    angel: "Angel"
+    facebook: "FB"
+    memberProfile: "Member Profile"
+    skype: "Skype"
+    shirtSize: "Shirt Size"
+    birthday: "Birthday"
+    role: "Role in DB"
+    language: "Language"
+    trello: "Username in Trello"
+
+    coreTeamPositions: "Core Team Positions"
+    eventName: "Event name"
+    coreTeamPosition: "Position in CT"
+    eventStartDate: "Event Start"
+    eventEndDate: "Event End"
+
+    boardPositions: "Board Positions"
+    boardName: "Board Name"
+    boardPosition: "Position in Board"
+    mandateStartDate: "Start of Mandate"
+    mandateEndDate: "End of Mandate"
+
+    editMember: "Edit Member"
+    createMember: "Create Member"
+
+    basicInfo: "Basic Information"
+    membership: "Membership"
+    other: "Other"
+
+    nameRequired: "Are you kidding me? You don't even know the name?"
+    surnameRequired: "Please provide a surname. Otherwise, we will have difficulties making a business card for this person"
+    emailRequired: "Email will be needed for logging in"
+    genderRequired: "Hermaphrodites not supported"
+
+
+board:
+    board: "Board"
+    previous: "Previous"
+    following: "Following"
+    boardNumber: "Board Number"
+    startDate: "Start Date"
+    endDate: "End Date"
+    name: "Name of the board"
+
+    editboard: "Edit Board"
+    createBoard: "Create Board"
+
+    about: "About Board"
+    positions: "Positions"
+
+event:
+    name: "Name"
+    eventDescription: "Event Description"
+    place: "Place"
+    startDate: "Start Date"
+    endDate: "End Date"
+    coreTeam: "Core Team"
+    positionInCT: "Position in CT"
+    memberOfCT: "Member"
+    event: "Event"
+    mo: "Main Organiser"
+    facebook: "Facebook"
+    state: "State"
+
+    editEvent: "Edit Event"
+    createEvent: "Create Event"
+    addCTMember: "Add CT Member"
+
+    basicInfo: "Basic Information"
+
+    nameRequired: "You should know the name"
+    placeRequired: "Where the event takes place is quite an important information"
+    dateRequired: "When the event takes place is quite an important information"
+
+ctpos:
+    name: "Name"
+    member: "Member"
+    description: "Description"
+
+    nameRequired: "The core team position needs a name"
+    memberRequired: "When there is a position in the core team, it should be occupied, shouldn't it?"
+    descriptionDescription: "Voluntary breef description of the position"
+
+    editCoreTeamPosition: "Edit Core Team Position"
+    createCoreTeamPosition: "Create Core Team Position"
+
+stats:
+    activeMembers: "Active Members"
+    faculties: "Faculties"
+    workingGroups: "Working Groups"
+    dickBoobsRatio: "Dick-Boobs Ratio"
+
+nomination:
+    createNomination: "Create Nomination"
+    nominate: "Nominate"
+    description: "Description"
+    descriptonDescription: "Voluntary note, that will be shown to the nominee"
+    nominee: "Nominee"
+    position: "Position"
+
+election:
+    elections: "Elections"
+    noElections: "Currently, there are no elections"
+    myNominations: "My Nominations"
+    nominateSomeone: "Nominate Someone"
+    nominations: "Nominations"
+    name: "Name"
+    startDate: "Start of Nominations"
+    endDate: "End of Nominations"
+    positions: "Positions"
+
+    editElection: "Edit Election"
+    createElection: "Create Election"
+
+    noNominations: "You haven't been nominated for any position. <br/>Don't be sad. Eat a carrot!<br/><br/>"
+
+    nameRequired: "Name is required"
+    startDateRequired: "Providing a start date of the nominations is mandatory"
+    endDateRequired: "Providing an end date of the nominations is mandatory"
+
+    publishedDescription: " Members can see their nominations (torn on after the election)"
