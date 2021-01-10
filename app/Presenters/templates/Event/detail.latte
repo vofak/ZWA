@@ -104,7 +104,7 @@
 
     $(document).ready(function () {
 
-        xhr.open("GET", "/event?eventId=" + new URLSearchParams(window.location.search).get('eventId') + '&do=getEventName');
+        xhr.open("GET", "https://zwa-members.bestprague.cz/event?eventId=" + new URLSearchParams(window.location.search).get('eventId') + '&do=getEventName');
         xhr.onload = e => onload(e);
         xhr.send()
 

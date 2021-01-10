@@ -6,7 +6,7 @@
         {_messages.common.create}
     </a>
     <table id="table" class="table table-striped table-hover"
-           data-url="/event?do=getEventList"
+           data-url="https://zwa-members.bestprague.cz/event?do=getEventList"
            data-type="json"
            data-query-params-type="limit"
            data-side-pagination="server"
@@ -34,6 +34,6 @@
     }
 
     function nameFormatter(value, row, index) {
-        return '<a href="/event/detail?eventId=' + row.eventId + '">' + value + '</a>';
+        return '<a href="https://zwa-members.bestprague.cz/event/detail?eventId=' + row.eventId + '">' + value + '</a>';
     }
 </script>
